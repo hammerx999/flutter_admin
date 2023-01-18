@@ -1,18 +1,31 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_admin/add_bill.dart';
 import 'package:flutter_admin/constants.dart';
 import 'package:flutter_admin/widget_tree.dart';
+import 'package:get/get.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+     options: FirebaseOptions(
+      apiKey: "AIzaSyD3xGPi9VlJPkEwKPQkzUFldQPGzrw9pVE",
+      appId: "1:1089337010053:android:3fca0618070eead5f1c6ec",
+      messagingSenderId: "1089337010053	",
+      projectId: "flutter-hor",
+    ),
+  );
 
-void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   const MyApp({Key? key}) : super(key: key);
+
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         
@@ -20,7 +33,11 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Constants.purpleDark,
         canvasColor: Constants.purpleLight
       ),
-      home: WidgetTree(),
+      initialRoute: '/',
+      routes: {
+        '/' :(context) => WidgetTree(),
+        '/add' :(context) => AddBill()
+      },
     );
   }
 }

@@ -77,7 +77,7 @@ class _PanelLeftPageState extends State<PanelLeftPage> {
                 ),
               ),
               LineChartSample2(),
-              PieChartSample2(),
+              // PieChartSample2(),
               Padding(
                 padding: const EdgeInsets.only(
                   left: Constants.kPadding / 2,

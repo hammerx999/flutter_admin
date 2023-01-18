@@ -11,16 +11,17 @@ class DrawerPage extends StatefulWidget {
 class ButtonsInfo {
   String title;
   IconData icon;
-  ButtonsInfo({required this.title, required this.icon});
+  String route;
+  ButtonsInfo({required this.title, required this.icon, required this.route});
 }
 
 int _currentIndex = 0;
 
 List<ButtonsInfo> _buttonNames = [
-  ButtonsInfo(title: "Home", icon: Icons.home),
-  ButtonsInfo(title: "Notifications", icon: Icons.notifications),
-  ButtonsInfo(title: "Users", icon: Icons.supervised_user_circle_rounded),
-  ];
+  ButtonsInfo(title: "Home", icon: Icons.home, route: '/'),
+  ButtonsInfo(title: "Notifications", icon: Icons.notifications, route: '/add'),
+  ButtonsInfo(title: "Users", icon: Icons.supervised_user_circle_rounded, route: '/add'),
+];
 
 class _DrawerPageState extends State<DrawerPage> {
   @override
@@ -77,6 +78,7 @@ class _DrawerPageState extends State<DrawerPage> {
                               ),
                               onTap: () {
                                 setState(() {
+                                  Navigator.pushNamed(context,  _buttonNames[index].route);
                                   _currentIndex = index;
                                 });
                               },
@@ -85,8 +87,10 @@ class _DrawerPageState extends State<DrawerPage> {
                               ),
                             ),
                           ),
-                          Divider(color: Colors.white,
-                          thickness: 0.1,)
+                          Divider(
+                            color: Colors.white,
+                            thickness: 0.1,
+                          )
                         ],
                       )),
             ],

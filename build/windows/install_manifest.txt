@@ -1,5 +1,7 @@
 D:/flutter/flutter_admin/build/windows/runner/Debug/data/icudtl.dat
 D:/flutter/flutter_admin/build/windows/runner/Debug/flutter_windows.dll
+D:/flutter/flutter_admin/build/windows/runner/Debug/permission_handler_windows_plugin.dll
+D:/flutter/flutter_admin/build/windows/runner/Debug/url_launcher_windows_plugin.dll
 D:/flutter/flutter_admin/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
 D:/flutter/flutter_admin/build/windows/runner/Debug/data/flutter_assets/assets/images/horlogo.png
 D:/flutter/flutter_admin/build/windows/runner/Debug/data/flutter_assets/assets/images/person.png

@@ -228,6 +228,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{D82FC60B-7AF2-3898-8883-57ACA0DCA9A5}</Project>
       <Name>flutter_wrapper_plugin</Name>
     </ProjectReference>
+    <ProjectReference Include="D:\flutter\flutter_admin\build\windows\plugins\permission_handler_windows\permission_handler_windows_plugin.vcxproj">
+      <Project>{D842A1D4-3BB5-30EF-BE4E-DFE2393BA6FA}</Project>
+      <Name>permission_handler_windows_plugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\flutter\flutter_admin\build\windows\plugins\url_launcher_windows\url_launcher_windows_plugin.vcxproj">
+      <Project>{83969C7A-B226-3C92-9472-C073119DBAF1}</Project>
+      <Name>url_launcher_windows_plugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

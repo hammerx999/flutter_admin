@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class LineChartSample2 extends StatefulWidget {
-  const LineChartSample2({super.key});
+  const LineChartSample2({Key? key}) : super(key: key);
 
   @override
   State<LineChartSample2> createState() => _LineChartSample2State();
