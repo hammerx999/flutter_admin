@@ -19,7 +19,7 @@ int _currentIndex = 0;
 
 List<ButtonsInfo> _buttonNames = [
   ButtonsInfo(title: "Home", icon: Icons.home, route: '/'),
-  ButtonsInfo(title: "Notifications", icon: Icons.notifications, route: '/add'),
+  ButtonsInfo(title: "Addbill", icon: Icons.add_card, route: '/add'),
   ButtonsInfo(title: "Users", icon: Icons.supervised_user_circle_rounded, route: '/add'),
 ];
 

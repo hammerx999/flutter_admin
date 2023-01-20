@@ -1,12 +1,15 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin/app_bar/app_bar_widget.dart';
+import 'package:flutter_admin/bill/add_stack.dart';
+import 'package:flutter_admin/bill/list_room_page.dart';
 import 'package:flutter_admin/constants.dart';
 import 'package:flutter_admin/drawer/drawer_page.dart';
 import 'package:flutter_admin/panel_center/panel_center.page.dart';
 import 'package:flutter_admin/panel_left/panel_left_page.dart';
 import 'package:flutter_admin/panel_right/panel_right_page.dart';
 import 'package:flutter_admin/responsive_layout.dart';
+import 'package:http/http.dart';
 
 import 'bill/add_bill_page.dart';
 
@@ -48,7 +51,7 @@ class _AddBillState extends State<AddBill> {
         phone: currentIndex == 0
             ? PanelLeftPage()
             : currentIndex == 1
-                ? AddBillPage()
+                ? ListRoomPage()
                 : AddBillPage(),
         tablet: Row(
           children: [
@@ -64,11 +67,11 @@ class _AddBillState extends State<AddBill> {
           ],
         ),
         computer: Row(
-          children: [
+          children: [ 
             Expanded(child: DrawerPage()),
-            Expanded(child: AddBillPage()),
-            Expanded(child: AddBillPage()),
-            Expanded(child: AddBillPage()),
+            Expanded(child: AddStack()),
+            Expanded(child: Container()),
+            Expanded(child: Container()),
           ],
         ),
       ),
