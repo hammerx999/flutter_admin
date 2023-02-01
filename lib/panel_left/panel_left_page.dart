@@ -60,7 +60,7 @@ class _PanelLeftPageState extends State<PanelLeftPage> {
                     width: double.infinity,
                     child: ListTile(
                         title: Text(
-                          "Products Sold",
+                          "ห้องทั้งหมด",
                           style: TextStyle(color: Colors.white),
                         ),
                         subtitle: Text(
@@ -69,7 +69,7 @@ class _PanelLeftPageState extends State<PanelLeftPage> {
                         ),
                         trailing: Chip(
                           label: Text(
-                            "4,500",
+                            "50",
                             style: TextStyle(color: Colors.white),
                           ),
                         )),

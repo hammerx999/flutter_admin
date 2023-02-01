@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_admin/constants.dart';
 import 'package:flutter_admin/responsive_layout.dart';
 
-List<String> _buttonNames = ["overview", "Revenue", "Sales", "Control"];
+List<String> _buttonNames = ["SURIYA"];
 int _currentSelectedButton = 0;
 
 class AppBarWidget extends StatefulWidget {

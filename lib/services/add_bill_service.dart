@@ -1,11 +1,8 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_admin/services/show_notification.dart';
-
 
 import 'logger_service.dart';
 
@@ -13,10 +10,10 @@ Future<void> addBill(
     BuildContext context, Map<String, dynamic> data, String documentName) {
   return FirebaseFirestore.instance
       .collection("bills")
-      .doc(documentName)
+      .doc()
       .set(data)
       .then((returnData) {
-    showMessageBox(context, "Success", "Added item($documentName) to Firestore",
+    showMessageBox(context, "Success", "Added item to Firestore",
         actions: [dismissButton(context)]);
     logger.i("setData success");
   }).catchError((e) {
@@ -93,3 +90,5 @@ Future<void> addNews(
     logger.e(e);
   });
 }
+
+

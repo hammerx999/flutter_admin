@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_admin/app_bar/app_bar_widget.dart';
 import 'package:flutter_admin/bill/add_stack.dart';
 import 'package:flutter_admin/bill/list_room_page.dart';
+import 'package:flutter_admin/bill/list_room_page2.dart';
 import 'package:flutter_admin/constants.dart';
 import 'package:flutter_admin/drawer/drawer_page.dart';
 import 'package:flutter_admin/panel_center/panel_center.page.dart';
@@ -69,8 +70,8 @@ class _AddBillState extends State<AddBill> {
         computer: Row(
           children: [ 
             Expanded(child: DrawerPage()),
-            Expanded(child: AddStack()),
-            Expanded(child: Container()),
+            Expanded(child: ListRoomPage()),
+            Expanded(child: ListRoomPage2()),
             Expanded(child: Container()),
           ],
         ),

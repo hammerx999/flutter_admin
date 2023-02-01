@@ -46,7 +46,7 @@ class _PanelCenterPageState extends State<PanelCenterPage> {
                   width: double.infinity,
                   child: ListTile(
                     title: Text(
-                      "Products Sold",
+                      "ห้องที่มีผู้เช่า",
                       style: TextStyle(color: Colors.white),
                     ),
                     subtitle: Text(
@@ -55,7 +55,7 @@ class _PanelCenterPageState extends State<PanelCenterPage> {
                     ),
                     trailing: Chip(
                       label: Text(
-                        "4,500",
+                        "39",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
