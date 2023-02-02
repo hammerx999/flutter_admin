@@ -63,10 +63,7 @@ class _PanelLeftPageState extends State<PanelLeftPage> {
                           "ห้องทั้งหมด",
                           style: TextStyle(color: Colors.white),
                         ),
-                        subtitle: Text(
-                          "18 =% of Products Sold",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                        
                         trailing: Chip(
                           label: Text(
                             "50",
@@ -78,33 +75,33 @@ class _PanelLeftPageState extends State<PanelLeftPage> {
               ),
               LineChartSample2(),
               // PieChartSample2(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: Constants.kPadding / 2,
-                  right: Constants.kPadding / 2,
-                  top: Constants.kPadding / 2,
-                  bottom: Constants.kPadding,
-                ),
-                child: Card(
-                  color: Constants.purpleLight,
-                  elevation: 3,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    children: List.generate(
-                        _toDo.length,
-                        (index) => CheckboxListTile(
-                          title: Text(_toDo[index].name, style: TextStyle(color: Colors.white),),
-                            value: _toDo[index].enable,
-                            onChanged: (newValue) {
-                              setState(() {
-                                _toDo[index].enable = newValue ?? true;
-                              });
-                            })),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(
+              //     left: Constants.kPadding / 2,
+              //     right: Constants.kPadding / 2,
+              //     top: Constants.kPadding / 2,
+              //     bottom: Constants.kPadding,
+              //   ),
+              //   child: Card(
+              //     color: Constants.purpleLight,
+              //     elevation: 3,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(20),
+              //     ),
+              //     child: Column(
+              //       children: List.generate(
+              //           _toDo.length,
+              //           (index) => CheckboxListTile(
+              //             title: Text(_toDo[index].name, style: TextStyle(color: Colors.white),),
+              //               value: _toDo[index].enable,
+              //               onChanged: (newValue) {
+              //                 setState(() {
+              //                   _toDo[index].enable = newValue ?? true;
+              //                 });
+              //               })),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         )

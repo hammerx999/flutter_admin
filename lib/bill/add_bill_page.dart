@@ -6,11 +6,14 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storgae;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import '../constants.dart';
 import '../services/add_bill_service.dart';
+import '../services/logger_service.dart';
 import '../services/show_notification.dart';
+import 'package:logger/logger.dart';
 
-const List<String> list = <String>['1,800', '2,500', '3,000', '5,000'];
+const List<String> list = <String>['1800', '2500', '3000', '5000'];
 const List<String> listwater = <String>['100', '200', '300'];
 const List<String> listelec = <String>['7', '8', '9', '10', '11'];
 const List<String> listmonth = <String>[
@@ -63,7 +66,8 @@ class _AddBillPageState extends State<AddBillPage> {
             child: Column(
               children: <Widget>[
                 Text(Get.arguments['name'].toString(),
-                    style: TextStyle(color: Constants.orangeLight)),
+                    style:
+                        TextStyle(color: Constants.orangeLight, fontSize: 16)),
                 Padding(padding: const EdgeInsets.all(2)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -245,7 +249,17 @@ class _AddBillPageState extends State<AddBillPage> {
                           scrollbarAlwaysShow: true,
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "บาท",
+                      style: TextStyle(
+                          fontFamily: 'fonts1',
+                          fontSize: 12,
+                          color: Colors.white),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -266,7 +280,7 @@ class _AddBillPageState extends State<AddBillPage> {
                       children: [
                         Container(
                             height: 40,
-                            width: 60,
+                            width: 100,
                             child: Theme(
                               data: ThemeData(
                                   primaryColor: Colors.orange,
@@ -276,6 +290,11 @@ class _AddBillPageState extends State<AddBillPage> {
                                     color: Colors.white, fontSize: 12),
                                 controller: elecUnit,
                                 decoration: const InputDecoration(
+                                  labelText: 'หน่วยไฟ',
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'fonts1',
+                                      fontSize: 12,
+                                      color: Colors.white),
                                   border: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.teal)),
@@ -283,89 +302,112 @@ class _AddBillPageState extends State<AddBillPage> {
                                 keyboardType: TextInputType.phone,
                               ),
                             )),
-                        Container(
-                          width: 60,
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton2(
-                              isExpanded: true,
-                              hint: Row(
-                                children: const [
-                                  SizedBox(
-                                    width: 4,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      'Select Item',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.yellow,
+                        Row(
+                          children: [
+                            Text(
+                              "หน่วยละ",
+                              style: TextStyle(
+                                  fontFamily: 'fonts1',
+                                  fontSize: 12,
+                                  color: Colors.white),
+                            ),
+                            SizedBox(
+                              width: 6,
+                            ),
+                            Container(
+                              width: 50,
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton2(
+                                  isExpanded: true,
+                                  hint: Row(
+                                    children: const [
+                                      SizedBox(
+                                        width: 4,
                                       ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              items: listelec
-                                  .map((item) => DropdownMenuItem<String>(
-                                        value: item,
+                                      Expanded(
                                         child: Text(
-                                          item,
-                                          style: const TextStyle(
+                                          'Select Item',
+                                          style: TextStyle(
                                             fontSize: 12,
-                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.yellow,
                                           ),
                                           overflow: TextOverflow.ellipsis,
                                         ),
-                                      ))
-                                  .toList(),
-                              value: dropdownValueElec,
-                              onChanged: (value) {
-                                setState(() {
-                                  print(value);
-                                  selectedValue = value as String;
-                                  elec = value;
-                                });
-                              },
-                              icon: const Icon(
-                                Icons.arrow_forward_ios_outlined,
-                              ),
-                              iconSize: 12,
-                              iconEnabledColor: Colors.yellow,
-                              iconDisabledColor: Colors.grey,
-                              buttonHeight: 50,
-                              buttonWidth: 60,
-                              buttonPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
-                              buttonDecoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                border: Border.all(
-                                  color: Colors.black26,
+                                      ),
+                                    ],
+                                  ),
+                                  items: listelec
+                                      .map((item) => DropdownMenuItem<String>(
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ))
+                                      .toList(),
+                                  value: dropdownValueElec,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      print(value);
+                                      selectedValue = value as String;
+                                      elec = value;
+                                    });
+                                  },
+                                  icon: const Icon(
+                                    Icons.arrow_forward_ios_outlined,
+                                  ),
+                                  iconSize: 12,
+                                  iconEnabledColor: Colors.yellow,
+                                  iconDisabledColor: Colors.grey,
+                                  buttonHeight: 50,
+                                  buttonWidth: 60,
+                                  buttonPadding: const EdgeInsets.only(
+                                      left: 14, right: 14),
+                                  buttonDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6),
+                                    border: Border.all(
+                                      color: Colors.black26,
+                                    ),
+                                    color: Constants.purpleDark,
+                                  ),
+                                  itemHeight: 40,
+                                  itemPadding: const EdgeInsets.only(
+                                      left: 14, right: 14),
+                                  dropdownMaxHeight: 200,
+                                  dropdownWidth: 100,
+                                  dropdownPadding: null,
+                                  dropdownDecoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.redAccent,
+                                  ),
+                                  dropdownElevation: 8,
+                                  scrollbarRadius: const Radius.circular(20),
+                                  scrollbarThickness: 6,
+                                  scrollbarAlwaysShow: true,
                                 ),
-                                color: Constants.purpleLight,
                               ),
-                              itemHeight: 40,
-                              itemPadding:
-                                  const EdgeInsets.only(left: 14, right: 14),
-                              dropdownMaxHeight: 200,
-                              dropdownWidth: 100,
-                              dropdownPadding: null,
-                              dropdownDecoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.redAccent,
-                              ),
-                              dropdownElevation: 8,
-                              scrollbarRadius: const Radius.circular(20),
-                              scrollbarThickness: 6,
-                              scrollbarAlwaysShow: true,
                             ),
-                          ),
-                        )
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "บาท",
+                              style: TextStyle(
+                                  fontFamily: 'fonts1',
+                                  fontSize: 12,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
-               
                 SizedBox(
                   height: 10,
                 ),
@@ -457,7 +499,17 @@ class _AddBillPageState extends State<AddBillPage> {
                           scrollbarAlwaysShow: true,
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "บาท",
+                      style: TextStyle(
+                          fontFamily: 'fonts1',
+                          fontSize: 12,
+                          color: Colors.white),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -465,7 +517,6 @@ class _AddBillPageState extends State<AddBillPage> {
                 ),
                 Padding(padding: const EdgeInsets.all(10)),
                 ElevatedButton(
-                
                   child: Text("ยืนยัน"),
                   onPressed: () {
                     setState(() {
@@ -477,22 +528,38 @@ class _AddBillPageState extends State<AddBillPage> {
                         month == "" ||
                         elecUnit.text == "" ||
                         water == "" ||
-                        rentr == "" 
-                        ) {
+                        rentr == "") {
                       showMessageBox(context, "Error",
                           "Please enter name and description before adding it to firebase",
                           actions: [dismissButton(context)]);
                     } else {
+                      Future<void> addBill(BuildContext context,
+                          Map<String, dynamic> data, String documentName) {
+                        return FirebaseFirestore.instance
+                            .collection(Get.arguments['code_name'])
+                            .doc()
+                            .set(data)
+                            .then((returnData) {
+                          showMessageBox(context, "สำเร็จ",
+                              "เพิ่มบิลห้อง${Get.arguments['name']} สำเร็จ",
+                              actions: [
+                                dismissButton(context),
+                              ]);
+                          logger.i("setData success");
+                        }).catchError((e) {
+                          logger.e(e);
+                        });
+                      }
+
                       addBill(
                           context,
                           {
-                            "title": 'บิลค่าเช่าเดือน ${selectedIndex} ',
+                            "title": 'บิลค่าเช่าเดือน ${month} ',
                             "trailing": pddes,
                             "elec": elec,
                             "elecUnit": elecUnit.text,
                             "water": water,
                             "rentr": rentr,
-                            
                             "month": month
                           },
                           selectedIndex.toString());
@@ -511,8 +578,16 @@ class _AddBillPageState extends State<AddBillPage> {
                       });
                     }
 
-                    updateIndex(context, {"index": selectedIndex},
-                        'putchat');
+                    Future<void> updateElec(BuildContext context,
+                        Map<String, dynamic> data, String documentName) {
+                      return FirebaseFirestore.instance
+                          .collection("bill_puchat_01")
+                          .doc(documentName)
+                          .set({'elecOil': elec},
+                              SetOptions(merge: true)).then((value) {
+                        //Do your stuff.
+                      });
+                    }
                   },
                 )
               ],

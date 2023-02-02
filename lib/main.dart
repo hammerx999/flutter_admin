@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
           canvasColor: Constants.purpleLight),
       initialRoute: '/',
       routes: {'/': (context) => WidgetTree(), '/add': (context) => AddBill()},
+      debugShowCheckedModeBanner: false,
     );
+    
   }
 }

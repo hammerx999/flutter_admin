@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../panel_left/circle_graph.dart';
 
 class Person {
   String name;
@@ -49,10 +50,7 @@ class _PanelCenterPageState extends State<PanelCenterPage> {
                       "ห้องที่มีผู้เช่า",
                       style: TextStyle(color: Colors.white),
                     ),
-                    subtitle: Text(
-                      "18 =% of Products Sold",
-                      style: TextStyle(color: Colors.white),
-                    ),
+                    
                     trailing: Chip(
                       label: Text(
                         "39",
@@ -63,49 +61,50 @@ class _PanelCenterPageState extends State<PanelCenterPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: Constants.kPadding,
-                left: Constants.kPadding / 2,
-                right: Constants.kPadding / 2,
-                top: Constants.kPadding,
-              ),
-              child: Card(
-                color: Constants.purpleLight,
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  children: List.generate(
-                    _persons.length,
-                    (index) => ListTile(
-                      leading: CircleAvatar(
-                        radius: 15,
-                        child: Text(
-                          _persons[index].name.substring(0, 1),
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        backgroundColor: _persons[index].color,
-                      ),
-                      title: Text(
-                        _persons[index].name.substring(0, 1),
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.message,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(
+            //     bottom: Constants.kPadding,
+            //     left: Constants.kPadding / 2,
+            //     right: Constants.kPadding / 2,
+            //     top: Constants.kPadding,
+            //   ),
+            //   child: Card(
+            //     color: Constants.purpleLight,
+            //     elevation: 3,
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(20),
+            //     ),
+            //     child: Column(
+            //       children: List.generate(
+            //         _persons.length,
+            //         (index) => ListTile(
+            //           leading: CircleAvatar(
+            //             radius: 15,
+            //             child: Text(
+            //               _persons[index].name.substring(0, 1),
+            //               style: TextStyle(color: Colors.white),
+            //             ),
+            //             backgroundColor: _persons[index].color,
+            //           ),
+            //           title: Text(
+            //             _persons[index].name.substring(0, 1),
+            //             style: TextStyle(
+            //               color: Colors.white,
+            //             ),
+            //           ),
+            //           trailing: IconButton(
+            //             onPressed: () {},
+            //             icon: Icon(
+            //               Icons.message,
+            //               color: Colors.white,
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            PieChartSample2(),
           ],
         ),
       ),

@@ -88,13 +88,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = const Text('MAR', style: style);
+        text = const Text('DEC', style: style);
         break;
       case 5:
-        text = const Text('JUN', style: style);
+        text = const Text('JAN', style: style);
         break;
       case 8:
-        text = const Text('SEP', style: style);
+        text = const Text('FEB', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -116,13 +116,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
     String text;
     switch (value.toInt()) {
       case 1:
-        text = '10K';
+        text = '10';
         break;
       case 3:
-        text = '30k';
+        text = '30';
         break;
       case 5:
-        text = '50k';
+        text = '50';
         break;
       default:
         return Container();
@@ -189,11 +189,11 @@ class _LineChartSample2State extends State<LineChartSample2> {
           spots: const [
             FlSpot(0, 3),
             FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
+            FlSpot(4.9, 4),
+            FlSpot(6.8, 3.4),
             FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
+            FlSpot(9.5, 3.2),
+            FlSpot(11, 3.5),
           ],
           isCurved: true,
           gradient: LinearGradient(

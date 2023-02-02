@@ -42,6 +42,6 @@ void showMessageBox(BuildContext context, String titleText, String contentText,
     onPressed: () {
       Navigator.pop(context);
     },
-    child: Text("Dismiss"),
+    child: Text("ตกลง"),
   );
 }

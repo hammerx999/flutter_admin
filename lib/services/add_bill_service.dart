@@ -6,20 +6,6 @@ import 'package:flutter_admin/services/show_notification.dart';
 
 import 'logger_service.dart';
 
-Future<void> addBill(
-    BuildContext context, Map<String, dynamic> data, String documentName) {
-  return FirebaseFirestore.instance
-      .collection("bills")
-      .doc()
-      .set(data)
-      .then((returnData) {
-    showMessageBox(context, "Success", "Added item to Firestore",
-        actions: [dismissButton(context)]);
-    logger.i("setData success");
-  }).catchError((e) {
-    logger.e(e);
-  });
-}
 
 Future<void> updateBill(
     BuildContext context, Map<String, dynamic> data, String documentName) {

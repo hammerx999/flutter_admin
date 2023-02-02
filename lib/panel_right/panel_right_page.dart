@@ -31,16 +31,13 @@ class _PanelRightPageState extends State<PanelRightPage> {
                 width: double.infinity,
                 child: ListTile(
                   title: Text(
-                    "Products Sold",
+                    "ห้องว่าง",
                     style: TextStyle(color: Colors.white),
                   ),
-                  subtitle: Text(
-                    "18 =% of Products Sold",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  
                   trailing: Chip(
                     label: Text(
-                      "4,500",
+                      "9",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

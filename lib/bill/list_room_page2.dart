@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin/add_bill.dart';
 import 'package:flutter_admin/bill/add_bill_page.dart';
+import 'package:flutter_admin/bill/show_dialog_list2.dart';
 import 'package:get/get.dart';
 
 class ListRoomPage2 extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ListRoomPage2State extends State<ListRoomPage2> {
                         width: double.infinity,
                         child: GestureDetector(
                           onTap: () {
-                            Get.to(AddBill(), arguments: 1);
+                            Get.dialog(ShowDialogList2(), arguments: data);
                           },
                           child: ListTile(
                             leading: CircleAvatar(
