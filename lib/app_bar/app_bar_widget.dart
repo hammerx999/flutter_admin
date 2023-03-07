@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_admin/bill/dialog_setting.dart';
+import 'package:flutter_admin/bill/setting_bill_page.dart';
 import 'package:flutter_admin/constants.dart';
 import 'package:flutter_admin/responsive_layout.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 List<String> _buttonNames = ["SURIYA"];
 int _currentSelectedButton = 0;
@@ -114,12 +117,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
               ),
             ),
           Spacer(),
-          IconButton(
-            color: Colors.white,
-            iconSize: 30,
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          ),
+          
           Stack(
             children: [
               IconButton(
@@ -143,6 +141,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
               )
             ],
           ),
+          
           if(!ResponsiveLayuot.isPhone(context))
             Container(
               margin: EdgeInsets.all(Constants.kPadding),

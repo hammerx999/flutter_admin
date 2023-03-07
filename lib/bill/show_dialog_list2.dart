@@ -9,7 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import '../constants.dart';
 import '../services/add_bill_service.dart';
-import '../services/show_notification.dart';
+import 'show_notification.dart';
 
 class ShowDialogList2 extends StatelessWidget {
   const ShowDialogList2({Key? key}) : super(key: key);

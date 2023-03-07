@@ -9,7 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import '../constants.dart';
 import '../services/add_bill_service.dart';
-import '../services/show_notification.dart';
+import 'show_notification.dart';
 
 class ShowDialog extends StatelessWidget {
   const ShowDialog({Key? key}) : super(key: key);
@@ -21,13 +21,18 @@ class ShowDialog extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Container(
-              decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-                                ),
-          height: MediaQuery.of(context).size.height * 0.60,
-          width: MediaQuery.of(context).size.width * 0.25,
-          child: AddBillPage(),
+        child: Column(
+          children: [
+           
+            Container(
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                                    ),
+              height: MediaQuery.of(context).size.height * 0.60,
+              width: MediaQuery.of(context).size.width * 0.25,
+              child: AddBillPage(),
+            ),
+          ],
         ),
       ));
 }

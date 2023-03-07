@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_admin/add_bill.dart';
+import 'package:flutter_admin/constants.dart';
+import 'package:flutter_admin/screens/add_bill.dart';
 import 'package:flutter_admin/bill/add_bill_page.dart';
 import 'package:flutter_admin/bill/show_dialog.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,8 @@ class _ListRoomPageState extends State<ListRoomPage> {
         .snapshots();
     return Scaffold(
       // appBar: AppBar(),
-      body: StreamBuilder(
+      body:Container(
+        child:  StreamBuilder(
         stream: _listRoom,
         builder: (BuildContext context,
             AsyncSnapshot<QuerySnapshot> streamSnapshoot) {
@@ -40,6 +42,7 @@ class _ListRoomPageState extends State<ListRoomPage> {
                     document.data()! as Map<String, dynamic>;
                 return Column(
                   children: [
+                  
                     Container(
                         height: 40,
                         width: double.infinity,
@@ -54,10 +57,25 @@ class _ListRoomPageState extends State<ListRoomPage> {
                                 radius: 30,
                                 child: Image.asset("assets/images/horlogo.png"),
                               ),
-                              title: Text(
-                                data['name'].toString(),
-                                style: TextStyle(color: Colors.white),
-                              ),
+                              title: data['month'] != null ?
+                              
+                              Row(
+                                children: [
+                                 
+                                  Text(
+                                    data['name'].toString(),
+                                    style: TextStyle(color: Colors.white),
+                                  ),SizedBox(width: 6,),
+                                   Text( '( ${
+                                    data['month'].toString()} )',
+                                    style: TextStyle(color: Constants.orangeDark),
+                                  ),
+                                ],
+                              ) : 
+                                  Text(
+                                    data['name'].toString(),
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                               subtitle: data['status'] == false
                                   ? Text("มีผู้เช่า",
                                       style: TextStyle(color: Colors.green))
@@ -75,6 +93,7 @@ class _ListRoomPageState extends State<ListRoomPage> {
           }
         },
       ),
+      )
     );
   }
 }

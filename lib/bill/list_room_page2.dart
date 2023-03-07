@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_admin/add_bill.dart';
+import 'package:flutter_admin/screens/add_bill.dart';
 import 'package:flutter_admin/bill/add_bill_page.dart';
 import 'package:flutter_admin/bill/show_dialog_list2.dart';
 import 'package:get/get.dart';

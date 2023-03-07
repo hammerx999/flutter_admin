@@ -20,7 +20,8 @@ int _currentIndex = 0;
 List<ButtonsInfo> _buttonNames = [
   ButtonsInfo(title: "Home", icon: Icons.home, route: '/'),
   ButtonsInfo(title: "Addbill", icon: Icons.add_card, route: '/add'),
-  ButtonsInfo(title: "Users", icon: Icons.supervised_user_circle_rounded, route: '/add'),
+  ButtonsInfo(title: "SettingBill", icon: Icons.settings, route: '/setbill'),
+  ButtonsInfo(title: "Check", icon: Icons.check, route: '/check'),
 ];
 
 class _DrawerPageState extends State<DrawerPage> {
